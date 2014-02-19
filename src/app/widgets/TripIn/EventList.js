@@ -10,9 +10,24 @@ define([
   declare, array, Deferred,
   _WidgetBase, _TemplatedMixin, _Container
 ) {
+
+  var EventListItem = new declare([_WidgetBase, _TemplatedMixin], {
+
+    templateString: '<div><div data-dojo-attach-point="titleNode"></div><div data-dojo-attach-point="detailsNode"></div></div>',
+
+    baseClass: 'tripin-event-list-item',
+
+    _setEventGraphicAttr: function(newEventGraphic) {
+      this.eventGraphic = newEventGraphic;
+      this.titleNode.innerHTML = this.eventGraphic.attributes.NAME;
+      // TODO: what else goes in the title
+    }
+
+  });
+
   return declare([_WidgetBase, _TemplatedMixin, _Container], {
 
-    templateString: '<div><div data-dojo-attach-point="titleNode"></div></div>',
+    templateString: '<div><div data-dojo-attach-point="titleNode"></div><div data-dojo-attach-point="containerNode"></div></div>',
 
     baseClass: 'tripin-event-list',
 
@@ -53,9 +68,17 @@ define([
 
     // show list of events
     refresh: function() {
-      console.log('loop through features and show each');
+      this.clearEvents();
       array.forEach(this.featureLayer.graphics, function(graphic) {
-        console.log(graphic);
+        this.addChild(new EventListItem({
+          eventGraphic: graphic
+        }));
+      }, this);
+    },
+
+    clearEvents: function() {
+      array.forEach(this.getChildren(), function(child) {
+        this.removeChild(child);
       }, this);
     }
   });
