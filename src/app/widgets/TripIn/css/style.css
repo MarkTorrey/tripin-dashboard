@@ -38,6 +38,7 @@
 	margin: -14px;
 	right: 0;
 	padding: 0 15px;
+	z-index: 100;
 }
 .tripin-event-editor-label {
     display: inline-block;
@@ -97,6 +98,13 @@ font-size: 0.8em;
 	margin: 0 5px;
 	font-size: 1.2em;
 }
+
+.tripin-workflow-header {
+margin-top: 15px;
+font-size: 0.8em;
+}
+
+
 /* event list */
 
 .tripin-event-list {
