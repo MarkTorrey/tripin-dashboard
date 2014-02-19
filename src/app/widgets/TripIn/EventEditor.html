@@ -1,3 +1,27 @@
 <div>
-  <p>Hi</p>
+  <h3 data-dojo-attach-point="titleNode"></h3>
+  <form data-dojo-type="dijit/form/Form" data-dojo-attach-point="formNode">
+    <div>
+      <label class="${baseClass}-label">Event Name:</label>
+      <input type="text" data-dojo-attach-point="nameNode" required="true" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="placeHolder: 'Event name'" />
+    </div>
+    <div>
+      <label class="${baseClass}-label">Start Date:</label>
+      <input type="text" data-dojo-attach-point="startDateNode" data-dojo-type='dijit/form/DateTextBox' required="true" />
+      <input type="text" data-dojo-attach-point="startTimeNode" data-dojo-type="dijit/form/TimeTextBox" required="true" />
+    </div>
+    <div>
+      <label class="${baseClass}-label">End Date:</label>
+      <input type="text" data-dojo-attach-point="endDateNode" data-dojo-type='dijit/form/DateTextBox' required="true" />
+      <input type="text" data-dojo-attach-point="endTimeNode" data-dojo-type="dijit/form/TimeTextBox" required="true" />
+    </div>
+    <div>
+      <label class="${baseClass}-label">Description:</label>
+      <textarea type="text" data-dojo-attach-point="descriptionNode"></textarea>
+    </div>
+    <div class="${baseClass}-buttons">
+      <button data-dojo-attach-point="submitButton">OK</button>
+      <button data-dojo-attach-point="cancelButton">Cancel</button>
+    </div>
+  </form>
 </div>

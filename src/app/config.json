@@ -152,7 +152,18 @@
       "bottom": 0
     },
     "itemId": "5bd0a3640b23416fbedf483e7a6dabea",
-    "id": "map"
+    "id": "map",
+    "mapOptions": {
+      "extent": {
+        "xmin": -13026767.724599246,
+        "ymin": 4055771.66793495,
+        "xmax": -12997415.905737776,
+        "ymax": 4069109.9293706953,
+        "spatialReference": {
+          "wkid": 102100
+        }
+      }
+    }
   },
   "widgetPool": {
     "panel": {

@@ -1,4 +1,18 @@
+.tripin-workflow-parent {
+
+}
+
+.tripin-workflow-parent-logo {
+  text-align: center;
+  background-color: #ccc;
+}
+
+.tripin-workflow-parent-logo h2 {
+  margin: 0 !important;
+  
+}
+
 .tripin-event-editor {
   /* TODO: real styles */
-  color: red;
 }
+
