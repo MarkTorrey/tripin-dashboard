@@ -40,6 +40,9 @@ define([
   InfoTemplate,
   xhr) {
 
+  var activityInfoTemplateContent = '<div class="tripin-info"><div class="tripin-info-name">${NAME}</div><div class="tripin-info-count">${ATTENDEE_COUNT} attendee(s)</div><div class="tripin-info-date">${DATE}</div><div class="tripin-info-description">${DESCRIPTION}</div><div class="tripin-info-social"><img src="images/share.gif" /></div></div>';
+  var eventInfoTemplateContent    = '<div class="tripin-info"><div class="tripin-info-name">${NAME}</div><div class="tripin-info-description">${DESCRIPTION}</div><div class="tripin-info-date">${END_DATE}</div><div class="">${BUSINESSID}</div><div class="tripin-info-social"><img src="images/share.gif" /></div></div>';
+  
   var activityAttendeeCache = {};
 
   var ActivityAttendeesRenderer = declare(Renderer, {
@@ -59,8 +62,9 @@ define([
           handleAs: 'json'
         }).then(function(data) {
           array.forEach(data.features || [], function(feature) {
+            activityAttendeeCache[graphic.attributes.ACTIVITYID] =  Math.min(feature.attributes.ACTIVITY_COUNT, 11);
             if (feature.attributes.ACTIVITY_ID === graphic.attributes.ACTIVITYID) {
-              activityAttendeeCount = activityAttendeeCache[graphic.attributes.ACTIVITYID] =  Math.min(feature.attributes.ACTIVITY_COUNT, 11);
+              activityAttendeeCount = activityAttendeeCache[graphic.attributes.ACTIVITYID];
             }
           });
         },
@@ -100,14 +104,14 @@ define([
       // create the feature layer for the events service
       this.eventsFeatureLayer =  new FeatureLayer(this.config.eventsFeatureService, {
         outFields: ['*'],
-        infoTemplate: new InfoTemplate("TripIn Event", "${NAME}")
+        infoTemplate: new InfoTemplate("TripIn Event", eventInfoTemplateContent)
       });
       var eventsRenderer = new UniqueValueRenderer(
         new SimpleMarkerSymbol(
           "circle",
           10,
           new SimpleLineSymbol("solid", new Color([196, 33, 41]), 1),
-          new Color([26, 188, 156]) // 196, 33, 41 46, 204, 113
+          new Color([0, 103, 163])
         ),
         'BUSINESSID_1');
       eventsRenderer.addValue(286, new SimpleMarkerSymbol(
@@ -123,7 +127,7 @@ define([
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
         outFields: ['*'],
         mode: FeatureLayer.MODE_SNAPSHOT,
-        infoTemplate: new InfoTemplate("TripIn Activity", "${NAME} (${ATTENDEE_COUNT})<br />${DATE}<br />${DESCRIPTION}")
+        infoTemplate: new InfoTemplate("TripIn Activity", activityInfoTemplateContent)
       });
       this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({
         config: this.config

@@ -4,16 +4,18 @@
     <h2>Big Bear Lake</h2>
 
   </div>
-  <div class="tripin-workflow-title">
-    <div>
+  <div class="tripin-workflow-header">
+    <div class="tripin-workflow-brand">
       Events from
       <span data-dojo-attach-point="startTimeNode" class="event-start">start</span>
       to
       <span data-dojo-attach-point="endTimeNode" class="event-end">end</span>
     </div>
+  </div>
+  <div data-dojo-attach-point="containerNode"></div>
+  <div class="tripin-workflow-footer">
     <div data-dojo-attach-point="newEventNode" class="tripin-workflow-parent-new-event">
       <button data-dojo-attach-point="newEventButton" data-dojo-type="dijit/form/Button" class="new-button dojo-btn-success">New</button>
     </div>
   </div>
-  <div data-dojo-attach-point="containerNode"></div>
 </div>

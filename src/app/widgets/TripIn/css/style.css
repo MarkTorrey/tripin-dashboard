@@ -158,3 +158,35 @@ font-size: 0.8em;
 		min-width: 400px;
 	}
 }
+
+.tripin-info  div{
+  margin: 5px 0 5px 0;
+}
+
+.tripin-info-name {
+  font-weight: bold;
+}
+
+.tripin-info-count {
+  color: #777;
+}
+
+.tripin-info-date {
+  color: #777;
+}
+
+.tripin-info-description {
+
+}
+
+.tripin-info-social {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+

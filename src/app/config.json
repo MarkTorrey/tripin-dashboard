@@ -75,18 +75,6 @@
         "id": "widgets/HomeButton/Widget_4"
       },
       {
-        "uri": "widgets/MyLocation/Widget",
-        "inPanel": false,
-        "position": {
-          "left": 7,
-          "top": 150
-        },
-        "positionRelativeTo": "map",
-        "label": "MyLocation",
-        "name": "MyLocation",
-        "id": "widgets/MyLocation/Widget_5"
-      },
-      {
         "uri": "widgets/Timeslider/Widget",
         "id": "widgets/Timeslider/Widget_13",
         "inPanel": false,
