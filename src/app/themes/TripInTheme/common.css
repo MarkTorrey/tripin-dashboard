@@ -78,6 +78,14 @@
 
 /*butttons*/
 
+.jimu-widget-mylocation .LocateButton .zoomLocateButton, .HomeButton .home,
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton,
+.esriSimpleSliderVertical .esriSimpleSliderDecrementButton {
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+}
+
 .jimu-widget-mylocation .LocateButton .zoomLocateButton, .HomeButton .home {
 	background-color: rgba(0, 0, 0, 0.65) !important;
 	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.25)) !important;
@@ -86,7 +94,6 @@
 	border-radius: 2px;
 	font-family: "FontAwesome";
 	text-align: center;
-	line-height: 28px;
 }
 
 	.jimu-widget-mylocation .LocateButton .zoomLocateButton:hover, .HomeButton .home:hover {
