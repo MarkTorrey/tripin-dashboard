@@ -1,5 +1,6 @@
 {
-  "activitiesFeatureService": "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/Activities/FeatureServer/0",
-  "eventsFeatureService":     "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/arcgis/rest/services/Events/FeatureServer/0",
-  "businessesFeatureService": "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/Businesses/FeatureServer/0"
+  "eventsFeatureService":     "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/0",
+  "activitiesFeatureService": "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/1",
+  "businessesFeatureService": "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/2",
+  "trackingTableService":     "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/3"
 }
