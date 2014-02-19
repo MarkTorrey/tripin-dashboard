@@ -20,3 +20,8 @@
 .tripin-event-editor-row {
     margin: 0 0 5px 0;
 }
+
+/* event list */
+.tripin-event-list-item {
+    padding: 5px 0 0 0;
+}
