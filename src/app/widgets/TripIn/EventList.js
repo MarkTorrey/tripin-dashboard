@@ -49,6 +49,10 @@ define([
 
     _setTitleAttr: { node: "titleNode", type: "innerHTML" },
 
+    _setBusinessIdAttr: function(newBusinessId) {
+      this.businessId = newBusinessId;
+    },
+    
     _setFeatureLayerAttr: function(newFeatureLayer) {
       this.featureLayer = newFeatureLayer;
       if (this.featureLayer.loaded) {
@@ -81,9 +85,11 @@ define([
     refresh: function() {
       this.clearEvents();
       array.forEach(this.featureLayer.graphics, function(graphic) {
-        this.addChild(new EventListItem({
-          eventGraphic: graphic
-        }));
+        if (graphic.attributes.BUSINESSID_1 === this.businessId) {
+          this.addChild(new EventListItem({
+            eventGraphic: graphic
+          }));
+        }
       }, this);
     },
 

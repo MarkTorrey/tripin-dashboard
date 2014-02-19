@@ -37,6 +37,10 @@ define([
 
     _setTitleAttr: { node: "titleNode", type: "innerHTML" },
 
+    _setBusinessIdAttr: function(newBusinessId) {
+      this.businessId = newBusinessId;
+    },
+    
     _setFeatureLayerAttr: function(newFeatureLayer) {
       this.featureLayer = newFeatureLayer;
       if (this.featureLayer.loaded) {

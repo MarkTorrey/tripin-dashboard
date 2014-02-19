@@ -134,11 +134,13 @@ define([
       this.eventList = new EventList({
         title:        'My Events',
         featureLayer: this.eventsFeatureLayer,
+        businessId:   286
       });
 
       this.eventEditor = new EventEditor({
         title:        'Add Event',
-        featureLayer: this.eventsFeatureLayer
+        featureLayer: this.eventsFeatureLayer,
+        businessId:   286
       });
       this.own(this.newEventButton.on('Click', lang.hitch(this, function(/*e*/) {
         if (!this.eventEditor.isOpen) {
