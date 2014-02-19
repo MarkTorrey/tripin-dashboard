@@ -86,9 +86,10 @@ define([
     // EVENTID (ty
     getEventFeature: function() {
       // TODO: check if form is valid
+      var point = this.featureLayer.getMap().extent.getCenter();
       var eventFeature = {
         // TODO: get geom
-        geometry: null,
+        geometry: point,
         attributes: {
           BUSINESSID_1: this.businessId,
           NAME: this.nameNode.value,
