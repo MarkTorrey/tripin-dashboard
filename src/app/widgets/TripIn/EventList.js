@@ -42,8 +42,7 @@ define([
       if (this.featureLayer.loaded) {
         this._onFeatureLayerLoad();
       } else {
-        // TODO:
-        // this.clearEvents();
+        this.clearEvents();
       }
     },
 
