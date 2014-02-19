@@ -41,7 +41,7 @@ define([
   xhr) {
 
   var activityAttendeeCache = {};
-  
+
   var ActivityAttendeesRenderer = declare(Renderer, {
     config: null,
     constructor: function(args) {
@@ -50,7 +50,7 @@ define([
     getSymbol: function (graphic) {
       var symbol = null;
       var activityAttendeeCount = 0;
-      
+
       if (activityAttendeeCache.hasOwnProperty(graphic.attributes.ACTIVITYID)) {
         activityAttendeeCount = activityAttendeeCache[graphic.attributes.ACTIVITYID];
       } else {
@@ -70,7 +70,7 @@ define([
           console.groupEnd('ActivityAttendeesRenderer::getSymbol');
         });
       }
-      
+
       if (activityAttendeeCount > 0) {
         graphic.attributes.ATTENDEE_COUNT = activityAttendeeCount;
         symbol = new PictureMarkerSymbol({
@@ -129,7 +129,7 @@ define([
         config: this.config
       }));
       this.map.addLayer(this.activitiesFeatureLayer);
-      
+
       // widgets
       this.eventList = new EventList({
         title:        'My Events',
@@ -147,7 +147,20 @@ define([
           this.eventEditor.open();
         }
       })));
+      this.own(this.map.on('time-extent-change', lang.hitch(this, function(/*e*/) {
+        // var timeExtent = e.timeExtent;
+        this.refreshTimeExtent();
+      })));
+      this.refreshTimeExtent();
     },
+
+    // time extent
+    refreshTimeExtent: function() {
+      var timeExtent = this.map.timeExtent;
+      this.startTimeNode.innerHTML = timeExtent.startTime.toLocaleDateString();
+      this.endTimeNode.innerHTML = timeExtent.endTime.toLocaleDateString();
+    },
+
     startup: function() {
       window.MAP = this.map;
       this.inherited(arguments);
