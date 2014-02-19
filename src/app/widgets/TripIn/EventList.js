@@ -63,7 +63,7 @@ define([
 
   return declare([_WidgetBase, _TemplatedMixin, _Container], {
 
-    templateString: '<div><div data-dojo-attach-point="titleNode"></div><div data-dojo-attach-point="containerNode"></div></div>',
+    templateString: '<div><div data-dojo-attach-point="titleNode" class="${baseClass}-title"></div><div data-dojo-attach-point="containerNode"></div></div>',
 
     baseClass: 'tripin-event-list',
 
