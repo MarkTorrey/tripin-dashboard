@@ -21,7 +21,9 @@ loadResources([
   {type: 'css', url: path + 'jimu.js/css/jimu.css'}
 ], function(){
   require(['jimu'], function(jimuMain){
-    jimuMain.initApp();
+    
+    // TODO: inject delay
+    window.setTimeout(jimuMain.initApp, 1500);
   });
 }, loadingInfo);
 
