@@ -4,7 +4,6 @@
 
 .tripin-workflow-parent-logo {
   text-align: center;
-  background-color: #ccc;
 }
 
 .tripin-workflow-parent-logo h2 {
@@ -31,6 +30,16 @@
 
 /* event list */
 .tripin-event-list-item {
+<<<<<<< HEAD
     padding: 5px 0 0 0;
 }
 
+=======
+    padding: 5px 0 5px 0;
+    vertical-align: middle;
+}
+
+.tripin-event-list-item + .tripin-event-list-item { 
+  border-top: 1px solid rgb(196, 33, 41);
+}
+>>>>>>> pre-merge
