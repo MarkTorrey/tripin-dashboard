@@ -2,6 +2,7 @@ define([
   'dojo/_base/declare',
   'dojo/_base/lang',
   'dojo/_base/array',
+  'dojo/_base/Color',
   'dijit/_WidgetsInTemplateMixin',
   'jimu/BaseWidget',
   'jimu/dijit/TabContainer',
@@ -11,12 +12,15 @@ define([
   './EventList',
   'esri/layers/FeatureLayer',
   'esri/renderers/Renderer',
+  'esri/renderers/SimpleRenderer',
   'esri/symbols/PictureMarkerSymbol',
   'esri/symbols/SimpleMarkerSymbol',
+  'esri/symbols/SimpleLineSymbol',
   'dojo/request/xhr'
 ], function(declare,
   lang,
   array,
+  Color,
   _WidgetsInTemplateMixin,
   BaseWidget,
   TabContainer,
@@ -26,8 +30,10 @@ define([
   EventList,
   FeatureLayer,
   Renderer,
+  SimpleRenderer,
   PictureMarkerSymbol,
   SimpleMarkerSymbol,
+  SimpleLineSymbol,
   xhr) {
 
   var ActivityAttendeesRenderer = declare(Renderer, {
@@ -35,46 +41,40 @@ define([
     constructor: function(args) {
       lang.mixin(this, args);
     },
-    // TODO: create a time-based cache for the activities, to provide a count by business ID
-    // NOTE: I think I'm mixing up the layers, but they should be interchangeable (JB)
     getSymbol: function (graphic) {
-      console.group('ActivityAttendeesRenderer::getSymbol');
-      console.log(graphic);
-      try {
       var data = null;
       xhr(this.config.trackingTableService + this.config.trackingTableQuery, {
         sync: true,
         handleAs: 'json'
       }).then(function(d) {
-        //console.log("then");
-        //console.log(arguments);
         data = d;
       },
       function(error) {
+        console.group('ActivityAttendeesRenderer::getSymbol');
         console.error(error);
+        console.groupEnd('ActivityAttendeesRenderer::getSymbol');
       });
-      console.log(data);
-      console.groupEnd('ActivityAttendeesRenderer::getSymbol');
       var symbol = null;
       if (data !== null) {
-        // TODO: create the picture marker symbol
         array.forEach(data.features, function(feature) {
           if (feature.attributes.ACTIVITY_ID === graphic.attributes.OBJECTID) {
             var actCount = feature.attributes.ACTIVITY_COUNT;
-            console.log("count: " + actCount);
             symbol = new PictureMarkerSymbol({
               url:  'images/symbols/' + Math.min(actCount, 11) + '.png',
-              type: 'esriPMS'
+              type: 'esriPMS',
+              width: 22,
+              xoffset: 11,
+              height: 31,
+              yoffset: 15
             });
           }
         });
-      } else {
+      }
+      
+      if (symbol === null) {
         symbol = new SimpleMarkerSymbol();
       }
       return symbol;
-    } catch (e) {
-      console.error(e);
-    }
   }
 });
 
@@ -85,21 +85,28 @@ define([
     postCreate: function() {
       this.inherited(arguments);
 
-      // create the feature layer for the activities service
+      // create the feature layer for the events service
       this.eventsFeatureLayer =  new FeatureLayer(this.config.eventsFeatureService, {
         outFields: ['*']
       });
-      // TODO: create a renderer for the events
+      this.eventsFeatureLayer.setRenderer(new SimpleRenderer(new SimpleMarkerSymbol(
+        "circle",
+        12,
+        new SimpleLineSymbol("solid", new Color([0, 0, 0]), 1),
+        new Color([196, 33, 41])
+      )));
       this.map.addLayer(this.eventsFeatureLayer);
 
+      // create the feature layer for the activities service
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
-        // TODO: does this need options? I don't think it does, initially
+        outFields: ['*']
       });
       this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({
         config: this.config
       }));
       this.map.addLayer(this.activitiesFeatureLayer);
 
+      // widgets
       this.eventList = new EventList({
         title:        'My Events',
         featureLayer: this.eventsFeatureLayer,
