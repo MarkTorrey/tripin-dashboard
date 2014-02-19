@@ -1,5 +1,6 @@
 define([
   'dojo/_base/declare',
+  'dojo/_base/lang',
   'dijit/_WidgetsInTemplateMixin',
   'jimu/BaseWidget',
   'jimu/dijit/TabContainer',
@@ -12,6 +13,7 @@ define([
   'esri/symbols/SimpleMarkerSymbol',
   'dojo/request/xhr'
 ], function(declare,
+  lang,
   _WidgetsInTemplateMixin,
   BaseWidget,
   TabContainer,
@@ -22,15 +24,21 @@ define([
   Renderer,
   PictureMarkerSymbol,
   SimpleMarkerSymbol,
-  xhr) {  
+  xhr) {
   
   var ActivityAttendeesRenderer = declare(Renderer, {
+    config: null,
+    constructor: function(args) {
+      lang.mixin(this, args);
+    },
     // TODO: create a time-based cache for the activities, to provide a count by business ID
     // NOTE: I think I'm mixing up the layers, but they should be interchangeable (JB)
     getSymbol: function (graphic) {
       console.group('ActivityAttendeesRenderer::getSymbol');
+      console.log(graphic);
+      try {
       var data = null;
-      xhr.get(this.config.trackingTableService + this.config.trackingTableQuery, {
+      xhr(this.config.trackingTableService + this.config.trackingTableQuery, {
         sync: true,
         handleAs: 'json',
         load: function(d) {
@@ -40,17 +48,20 @@ define([
           console.error(error);
         }
       });
-      
+      console.log(data);
       if (data !== null) {
         // TODO: create the picture marker symbol
+        return new SimpleMarkerSymbol();
       } else {
         return new SimpleMarkerSymbol();
       }
-      
+    } catch (e) {
+      console.error(e);
+    } finally {
       console.groupEnd('ActivityAttendeesRenderer::getSymbol');
-      return new SimpleMarkerSymbol();
     }
-  });
+  }
+});
 
   return declare([BaseWidget, _WidgetsInTemplateMixin], {
     name: 'TripIn',
@@ -68,7 +79,9 @@ define([
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
         // TODO: does this need options? I don't think it does, initially
       });
-      this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({}));
+      this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({ 
+        config: this.config
+      }));
       this.map.addLayer(this.activitiesFeatureLayer);
 
       this.eventEditor = new EventEditor({
