@@ -3,17 +3,20 @@
   <form data-dojo-type="dijit/form/Form" data-dojo-attach-point="formNode">
     <div class="${baseClass}-row">
       <label class="${baseClass}-label">Name</label>
-      <input type="text" data-dojo-attach-point="nameNode" required="true" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="placeHolder: 'Event name'" />
+      <input type="text" data-dojo-attach-point="nameNode" data-dojo-props="required: true" data-dojo-type="dijit/form/ValidationTextBox" placeholder="Event name" />
+    </div>
+    <div class="${baseClass}-row">
+      <label class="${baseClass}-label">Place</label>
+      <input type="text" data-dojo-attach-point="placeNode" data-dojo-props="required: true" data-dojo-type="dijit/form/ValidationTextBox" placeholder="Place name" />
+      <button data-dojo-attach-point="mapButton" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconCut', showLabel: false" type="button">Map</button>
     </div>
     <div class="${baseClass}-row">
       <label class="${baseClass}-label">Start</label>
-      <input type="text" data-dojo-attach-point="startDateNode" data-dojo-type='dijit/form/DateTextBox' required="true" />
-      <input type="text" data-dojo-attach-point="startTimeNode" data-dojo-type="dijit/form/TimeTextBox" required="true" />
+      <input type="text" data-dojo-attach-point="startDateNode" data-dojo-type='dijit/form/DateTextBox' data-dojo-props="required: true" />
     </div>
     <div class="${baseClass}-row">
       <label class="${baseClass}-label">End</label>
-      <input type="text" data-dojo-attach-point="endDateNode" data-dojo-type='dijit/form/DateTextBox' required="true" />
-      <input type="text" data-dojo-attach-point="endTimeNode" data-dojo-type="dijit/form/TimeTextBox" required="true" />
+      <input type="text" data-dojo-attach-point="endDateNode" data-dojo-type='dijit/form/DateTextBox' data-dojo-props="required: true" />
     </div>
     <div class="${baseClass}-row">
       <label class="${baseClass}-label">Description</label>

@@ -13,9 +13,9 @@ define([
   'dojo/request/xhr'
 ], function(declare,
   _WidgetsInTemplateMixin,
-  BaseWidget, 
-  TabContainer, 
-  List, 
+  BaseWidget,
+  TabContainer,
+  List,
   utils,
   EventEditor,
   FeatureLayer,
@@ -51,7 +51,7 @@ define([
       return new SimpleMarkerSymbol();
     }
   });
-  
+
   return declare([BaseWidget, _WidgetsInTemplateMixin], {
     name: 'TripIn',
     baseClass: 'tripin-workflow-parent',
@@ -64,14 +64,15 @@ define([
       });
       //this.eventsFeatureLayer.setRenderer(new ActivityAttendeesRenderer({}));
       this.map.addLayer(this.eventsFeatureLayer);
-      
+
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
         // TODO: does this need options? I don't think it does, initially
       });
       this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({}));
       this.map.addLayer(this.activitiesFeatureLayer);
-      
+
       this.eventEditor = new EventEditor({
+        title:        'Add Event',
         featureLayer: this.eventsFeatureLayer,
         map:          this.map
       });
