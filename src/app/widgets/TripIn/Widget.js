@@ -16,6 +16,7 @@ define([
   'esri/symbols/PictureMarkerSymbol',
   'esri/symbols/SimpleMarkerSymbol',
   'esri/symbols/SimpleLineSymbol',
+  'esri/InfoTemplate',
   'dojo/request/xhr'
 ], function(declare,
   lang,
@@ -34,40 +35,49 @@ define([
   PictureMarkerSymbol,
   SimpleMarkerSymbol,
   SimpleLineSymbol,
+  InfoTemplate,
   xhr) {
 
+  var activityAttendeeCache = {};
+  
   var ActivityAttendeesRenderer = declare(Renderer, {
     config: null,
     constructor: function(args) {
       lang.mixin(this, args);
     },
     getSymbol: function (graphic) {
-      var data = null;
-      xhr(this.config.trackingTableService + this.config.trackingTableQuery, {
-        sync: true,
-        handleAs: 'json'
-      }).then(function(d) {
-        data = d;
-      },
-      function(error) {
-        console.group('ActivityAttendeesRenderer::getSymbol');
-        console.error(error);
-        console.groupEnd('ActivityAttendeesRenderer::getSymbol');
-      });
       var symbol = null;
-      if (data !== null) {
-        array.forEach(data.features, function(feature) {
-          if (feature.attributes.ACTIVITY_ID === graphic.attributes.OBJECTID) {
-            var actCount = feature.attributes.ACTIVITY_COUNT;
-            symbol = new PictureMarkerSymbol({
-              url:  'images/symbols/' + Math.min(actCount, 11) + '.png',
-              type: 'esriPMS',
-              width: 22,
-              xoffset: 11,
-              height: 31,
-              yoffset: 15
-            });
-          }
+      var activityAttendeeCount = 0;
+      
+      if (activityAttendeeCache.hasOwnProperty(graphic.attributes.ACTIVITYID)) {
+        activityAttendeeCount = activityAttendeeCache[graphic.attributes.ACTIVITYID];
+      } else {
+        xhr(this.config.trackingTableService + this.config.trackingTableQuery, {
+          sync: true,
+          handleAs: 'json'
+        }).then(function(data) {
+          array.forEach(data.features || [], function(feature) {
+            if (feature.attributes.ACTIVITY_ID === graphic.attributes.ACTIVITYID) {
+              activityAttendeeCount = activityAttendeeCache[graphic.attributes.ACTIVITYID] =  Math.min(feature.attributes.ACTIVITY_COUNT, 11);
+            }
+          });
+        },
+        function(error) {
+          console.group('ActivityAttendeesRenderer::getSymbol');
+          console.error(error);
+          console.groupEnd('ActivityAttendeesRenderer::getSymbol');
+        });
+      }
+      
+      if (activityAttendeeCount > 0) {
+        graphic.attributes.ATTENDEE_COUNT = activityAttendeeCount;
+        symbol = new PictureMarkerSymbol({
+          url:     'images/symbols/' + activityAttendeeCount + '.png',
+          type:    'esriPMS',
+          //xoffset: -8,
+          yoffset: 11,
+          width:   16,
+          height:  23
         });
       }
 
@@ -75,8 +85,8 @@ define([
         symbol = new SimpleMarkerSymbol();
       }
       return symbol;
-  }
-});
+    }
+  });
 
   return declare([BaseWidget, _WidgetsInTemplateMixin], {
     name: 'TripIn',
@@ -87,25 +97,28 @@ define([
 
       // create the feature layer for the events service
       this.eventsFeatureLayer =  new FeatureLayer(this.config.eventsFeatureService, {
-        outFields: ['*']
+        outFields: ['*'],
+        infoTemplate: new InfoTemplate("TripIn Event", "${NAME}")
       });
       this.eventsFeatureLayer.setRenderer(new SimpleRenderer(new SimpleMarkerSymbol(
         "circle",
         12,
-        new SimpleLineSymbol("solid", new Color([0, 0, 0]), 1),
-        new Color([196, 33, 41])
+        new SimpleLineSymbol("solid", new Color([196, 33, 41]), 1),
+        new Color([241, 196, 15]) // 196, 33, 41 46, 204, 113
       )));
       this.map.addLayer(this.eventsFeatureLayer);
 
       // create the feature layer for the activities service
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
-        outFields: ['*']
+        outFields: ['*'],
+        mode: FeatureLayer.MODE_SNAPSHOT,
+        infoTemplate: new InfoTemplate("TripIn Activity", "${NAME} (${ATTENDEE_COUNT})<br />${DATE}<br />${DESCRIPTION}")
       });
       this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({
         config: this.config
       }));
       this.map.addLayer(this.activitiesFeatureLayer);
-
+      
       // widgets
       this.eventList = new EventList({
         title:        'My Events',
