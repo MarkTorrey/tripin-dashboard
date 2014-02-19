@@ -1,0 +1,27 @@
+{
+  "name": "TripInTheme",
+  "panels": [
+    {
+      "name": "SimplePanel",
+      "description": "this is simple panel"
+    }
+  ],
+  "styles": [
+    {
+      "name": "default",
+      "description": "this is default style",
+      "styleColor": "#485566"
+    }
+  ],
+  "layouts": [
+    {
+      "name": "default",
+      "description": "this is default layout"
+    }
+  ],
+  "version": "0.0.1",
+  "author": "Esri R&D Center Beijing",
+  "description": "",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0"
+}
