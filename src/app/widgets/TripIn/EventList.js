@@ -3,12 +3,14 @@ define([
   'dojo/_base/array',
   'dojo/Deferred',
   'dojo/string',
+  'dojo/on',
+  'dojo/dom-class',
 
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
   'dijit/_Container'
 ], function(
-  declare, array, Deferred, string,
+  declare, array, Deferred, string, on, domClass,
   _WidgetBase, _TemplatedMixin, _Container
 ) {
 
@@ -18,9 +20,31 @@ define([
 
     baseClass: 'tripin-event-list-item',
 
+    isSelected: false,
+
+    // set ref to the event feature and update UI
     _setEventGraphicAttr: function(newEventGraphic) {
       this.eventGraphic = newEventGraphic;
       this.refresh();
+    },
+
+    _setIsSelectedAttr: function(isSelected) {
+      this.isSelected = isSelected;
+      domClass.toggle(this.domNode, 'tripin-selected', isSelected);
+      console.log(this.eventGraphic);
+    },
+
+    postCreate: function() {
+      this.inherited(arguments);
+      this._initEventHandlers();
+    },
+
+    // init event handlers
+    _initEventHandlers: function() {
+      var _this = this;
+      this.own(on(this.titleNode, 'click', function(/*layer*/) {
+        _this.set('isSelected', !this.isSelected);
+      }));
     },
 
     // refresh UI based on event graphic
@@ -52,7 +76,7 @@ define([
     _setBusinessIdAttr: function(newBusinessId) {
       this.businessId = newBusinessId;
     },
-    
+
     _setFeatureLayerAttr: function(newFeatureLayer) {
       this.featureLayer = newFeatureLayer;
       if (this.featureLayer.loaded) {
