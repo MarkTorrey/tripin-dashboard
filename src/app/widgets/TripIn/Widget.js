@@ -10,10 +10,10 @@ define([
     name: "TripIn",
     baseClass: "tripin-workflow-parent",
     startup: function() {
-      alert("WorkflowParent::startup()");
+      console.log("WorkflowParent::startup()");
     },
     onClose: function() {
-      alert("WorkflowParent::onClose()");
+      console.log("WorkflowParent::onClose()");
     }
   });
 });
