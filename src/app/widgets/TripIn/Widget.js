@@ -7,6 +7,7 @@ define([
   'jimu/dijit/List',
   'jimu/utils',
   './EventEditor',
+  './EventList',
   'esri/layers/FeatureLayer',
   'esri/renderers/Renderer',
   'esri/symbols/PictureMarkerSymbol',
@@ -20,12 +21,13 @@ define([
   List,
   utils,
   EventEditor,
+  EventList,
   FeatureLayer,
   Renderer,
   PictureMarkerSymbol,
   SimpleMarkerSymbol,
   xhr) {
-  
+
   var ActivityAttendeesRenderer = declare(Renderer, {
     config: null,
     constructor: function(args) {
@@ -79,21 +81,27 @@ define([
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
         // TODO: does this need options? I don't think it does, initially
       });
-      this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({ 
+      this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({
         config: this.config
       }));
       this.map.addLayer(this.activitiesFeatureLayer);
 
+      this.eventList = new EventList({
+        title:        'My Events',
+        featureLayer: this.eventsFeatureLayer,
+      });
+
       this.eventEditor = new EventEditor({
         title:        'Add Event',
         featureLayer: this.eventsFeatureLayer,
-        map:          this.map
       });
+
     },
     startup: function() {
       window.MAP = this.map;
       this.inherited(arguments);
       console.log('TripIn::startup()');
+      this.eventList.placeAt(this.containerNode);
       this.eventEditor.placeAt(this.containerNode);
     },
     onOpen: function() {
