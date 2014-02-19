@@ -13,6 +13,7 @@ define([
   'esri/layers/FeatureLayer',
   'esri/renderers/Renderer',
   'esri/renderers/SimpleRenderer',
+  'esri/renderers/UniqueValueRenderer',
   'esri/symbols/PictureMarkerSymbol',
   'esri/symbols/SimpleMarkerSymbol',
   'esri/symbols/SimpleLineSymbol',
@@ -32,6 +33,7 @@ define([
   FeatureLayer,
   Renderer,
   SimpleRenderer,
+  UniqueValueRenderer,
   PictureMarkerSymbol,
   SimpleMarkerSymbol,
   SimpleLineSymbol,
@@ -100,12 +102,21 @@ define([
         outFields: ['*'],
         infoTemplate: new InfoTemplate("TripIn Event", "${NAME}")
       });
-      this.eventsFeatureLayer.setRenderer(new SimpleRenderer(new SimpleMarkerSymbol(
+      var eventsRenderer = new UniqueValueRenderer(
+        new SimpleMarkerSymbol(
+          "circle",
+          10,
+          new SimpleLineSymbol("solid", new Color([196, 33, 41]), 1),
+          new Color([26, 188, 156]) // 196, 33, 41 46, 204, 113
+        ),
+        'BUSINESSID_1');
+      eventsRenderer.addValue(286, new SimpleMarkerSymbol(
         "circle",
         12,
         new SimpleLineSymbol("solid", new Color([196, 33, 41]), 1),
         new Color([241, 196, 15]) // 196, 33, 41 46, 204, 113
-      )));
+      ));
+      this.eventsFeatureLayer.setRenderer(eventsRenderer);
       this.map.addLayer(this.eventsFeatureLayer);
 
       // create the feature layer for the activities service
