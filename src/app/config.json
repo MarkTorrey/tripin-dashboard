@@ -8,18 +8,18 @@
   },
   "portalUrl": "http://www.arcgis.com/",
   "appId": "crhIGF7lkhiqvKyT",
-  "title": "ArcGIS Web Application",
-  "subtitle": "with ArcGIS WebApp Builder",
+  "title": "TripIn",
+  "subtitle": "Dashboard",
   "splashPage": "widgets/Splash/Widget",
   "geometryService": {
     "url": "https://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer"
   },
   "logo": "images/app-logo.png",
   "links": [
-    {
+    /*{
       "label": "ArcGIS Online",
       "url": "//www.arcgis.com"
-    }
+    }*/
   ],
   "preloadWidgets": {
     "panel": {

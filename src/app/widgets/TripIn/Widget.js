@@ -17,7 +17,6 @@ define([
       this.inherited(arguments);
       this.eventEditor = new EventEditor();
     },
-
     startup: function() {
       this.inherited(arguments);
       console.log("WorkflowParent::startup()");
