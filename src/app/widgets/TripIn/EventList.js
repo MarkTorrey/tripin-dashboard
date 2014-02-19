@@ -1,16 +1,13 @@
 define([
   'dojo/_base/declare',
-  'dojo/_base/lang',
+  'dojo/_base/array',
   'dojo/Deferred',
 
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
-  'dijit/_Container',
-
-  // used in template
-  'dijit/form/Button'
+  'dijit/_Container'
 ], function(
-  declare, lang, Deferred,
+  declare, array, Deferred,
   _WidgetBase, _TemplatedMixin, _Container
 ) {
   return declare([_WidgetBase, _TemplatedMixin, _Container], {
@@ -46,7 +43,6 @@ define([
         _this._onFeatureLayerLoad();
       }));
       this.own(this.featureLayer.on('update-end', function(/*layer*/) {
-        console.log(arguments);
         _this.refresh();
       }));
     },
@@ -58,6 +54,9 @@ define([
     // show list of events
     refresh: function() {
       console.log('loop through features and show each');
+      array.forEach(this.featureLayer.graphics, function(graphic) {
+        console.log(graphic);
+      }, this);
     }
   });
 });
