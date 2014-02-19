@@ -14,11 +14,17 @@ define([
 
   var EventListItem = new declare([_WidgetBase, _TemplatedMixin], {
 
-    templateString: '<div><div data-dojo-attach-point="titleNode"></div><div data-dojo-attach-point="detailsNode"></div></div>',
+    templateString: '<div><div data-dojo-attach-point="titleNode" class="${baseClass}-title"></div><div data-dojo-attach-point="detailsNode" class="${baseClass}-details"></div></div>',
 
     baseClass: 'tripin-event-list-item',
 
     _setEventGraphicAttr: function(newEventGraphic) {
+      this.eventGraphic = newEventGraphic;
+      this.refresh();
+    },
+
+    // refresh UI based on event graphic
+    refresh: function() {
       var titleTemplate = '<span class="tripin-event-name">${NAME}</span><span class="tripin-event-dates">${dateRange}</span>';
       var attr = this.eventGraphic.attributes;
       attr.startDate = new Date(attr.START_DATE);
@@ -27,11 +33,8 @@ define([
       if (attr.endDate.getDate() !== attr.startDate.getDate()) {
         attr.dateRange = attr.dateRange + ' - ' + attr.endDate.toLocaleDateString();
       }
-      this.eventGraphic = newEventGraphic;
       this.titleNode.innerHTML = string.substitute(titleTemplate, attr);
-      // TODO: details
     }
-
   });
 
   return declare([_WidgetBase, _TemplatedMixin, _Container], {
