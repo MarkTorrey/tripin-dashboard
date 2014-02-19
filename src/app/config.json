@@ -178,10 +178,10 @@
         "index": 2
       },
       {
-        "label": "WorkflowParent",
-        "uri": "widgets/WorkflowParent/Widget",
-        "id": "widgets/WorkflowParent/Widget_12",
-        "name": "WorkflowParent",
+        "label": "TripIn",
+        "uri": "widgets/TripIn/Widget",
+        "id": "widgets/TripIn/Widget_12",
+        "name": "TripIn",
         "index": 3
       }
     ]
