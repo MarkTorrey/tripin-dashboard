@@ -10,9 +10,7 @@ define([
   'esri/renderers/Renderer',
   'esri/symbols/PictureMarkerSymbol',
   'esri/symbols/SimpleMarkerSymbol',
-  'esri/tasks/StatisticDefinition',
-  'esri/tasks/query',
-  'esri/tasks/QueryTask'
+  'dojo/request/xhr'
 ], function(declare,
   _WidgetsInTemplateMixin,
   BaseWidget, 
@@ -24,37 +22,31 @@ define([
   Renderer,
   PictureMarkerSymbol,
   SimpleMarkerSymbol,
-  StatisticDefinition,
-  Query,
-  QueryTask) {  
-  
-  var TrackingCache = function() {
-    this._lastUpdated = null;
-    
-    this.getData = function() {
-      var statDef = new StatisticDefinition();
-      statDef.onStatisticField = "ACTIVITY_ID";
-      statDef.outStatisticFieldName = "ACTIVITY_COUNT";
-      statDef.statisticType = "count";
-      
-      var query = new Query();
-      query.groupByFieldsForStatistics = ["ACTIVITY_ID"];
-      query.outFields = ["*"];
-      query.outStatistics = [statDef];
-      
-      var results = null;
-      var queryTask = new QueryTask(this.config.trackingTableService);
-      queryTask.execute(query, function(r) { results = r; }); // TODO: wait for it
-    };
-  };
-  var _trackingCache = new TrackingCache();
+  xhr) {  
   
   var ActivityAttendeesRenderer = declare(Renderer, {
     // TODO: create a time-based cache for the activities, to provide a count by business ID
     // NOTE: I think I'm mixing up the layers, but they should be interchangeable (JB)
     getSymbol: function (graphic) {
       console.group('ActivityAttendeesRenderer::getSymbol');
-      console.log(graphic);
+      var data = null;
+      xhr.get(this.config.trackingTableService + this.config.trackingTableQuery, {
+        sync: true,
+        handleAs: 'json',
+        load: function(d) {
+          data = d;
+        },
+        error: function(error) {
+          console.error(error);
+        }
+      });
+      
+      if (data !== null) {
+        // TODO: create the picture marker symbol
+      } else {
+        return new SimpleMarkerSymbol();
+      }
+      
       console.groupEnd('ActivityAttendeesRenderer::getSymbol');
       return new SimpleMarkerSymbol();
     }
@@ -80,7 +72,8 @@ define([
       this.map.addLayer(this.activitiesFeatureLayer);
       
       this.eventEditor = new EventEditor({
-        featureLayer: this.eventsFeatureLayer
+        featureLayer: this.eventsFeatureLayer,
+        map:          this.map
       });
     },
     startup: function() {
