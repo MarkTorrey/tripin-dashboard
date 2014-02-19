@@ -1,8 +1,8 @@
 define({
   root: {
-    welcomeMessage: "Welcome to ArcGIS Web Application!",
+    welcomeMessage: "TripIn Dashboard",
     licenceAgree: "I agree to",
-    licenceTerm: "ArcGIS Web Application Terms",
+    licenceTerm: "asdf Terms",
     labelContinue: "Continue",
     errorString: "* You need to agree to the licence to continue."
   },
