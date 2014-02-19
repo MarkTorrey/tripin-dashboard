@@ -21,9 +21,9 @@ loadResources([
   {type: 'css', url: path + 'jimu.js/css/jimu.css'}
 ], function(){
   require(['jimu'], function(jimuMain){
-    
+
     // delay the load so users can see our pretty pretty splash screen
-    window.setTimeout(jimuMain.initApp, 1500);
+    window.setTimeout(jimuMain.initApp, 1000);
   });
 }, loadingInfo);
 
