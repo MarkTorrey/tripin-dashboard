@@ -1,0 +1,31 @@
+{
+  "name": "tripin-dashboard",
+  "version": "0.0.1",
+  "description": "just like it says",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "~2.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomwayson/tripin-dashboard.git"
+  },
+  "keywords": [
+    "wab",
+    "tripin",
+    "esri",
+    "hackathon",
+    "awesomeness"
+  ],
+  "author": "teh closures",
+  "license": "unknown",
+  "bugs": {
+    "url": "https://github.com/tomwayson/tripin-dashboard/issues"
+  },
+  "homepage": "https://github.com/tomwayson/tripin-dashboard"
+}
