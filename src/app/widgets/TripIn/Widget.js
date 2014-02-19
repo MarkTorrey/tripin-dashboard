@@ -71,11 +71,12 @@ define([
     eventEditor: null,
     postCreate: function() {
       this.inherited(arguments);
+      
       // create the feature layer for the activities service
       this.eventsFeatureLayer =  new FeatureLayer(this.config.eventsFeatureService, {
         // TODO: does this need options? I don't think it does, initially
       });
-      //this.eventsFeatureLayer.setRenderer(new ActivityAttendeesRenderer({}));
+      // TODO: create a renderer for the events
       this.map.addLayer(this.eventsFeatureLayer);
 
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
