@@ -107,7 +107,7 @@ define([
           "circle",
           10,
           new SimpleLineSymbol("solid", new Color([196, 33, 41]), 1),
-          new Color([26, 188, 156]) // 196, 33, 41 46, 204, 113
+          new Color([0, 103, 163])
         ),
         'BUSINESSID_1');
       eventsRenderer.addValue(286, new SimpleMarkerSymbol(
@@ -123,7 +123,7 @@ define([
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
         outFields: ['*'],
         mode: FeatureLayer.MODE_SNAPSHOT,
-        infoTemplate: new InfoTemplate("TripIn Activity", "${NAME} (${ATTENDEE_COUNT})<br />${DATE}<br />${DESCRIPTION}")
+        infoTemplate: new InfoTemplate("TripIn Activity", "${NAME} (<i>${ATTENDEE_COUNT} attendee(s)</i>)<br />${DATE}<br />${DESCRIPTION}<br /><img src='images/share.gif' />")
       });
       this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({
         config: this.config
