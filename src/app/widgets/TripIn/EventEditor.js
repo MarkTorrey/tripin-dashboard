@@ -9,8 +9,11 @@ define([
 
   // used in template
   'dijit/form/Form',
+  'dijit/form/ValidationTextBox',
   'dijit/form/DateTextBox',
-  'dijit/form/TimeTextBox'
+  'dijit/form/TimeTextBox',
+  'dijit/form/Textarea',
+  'dijit/form/Button'
 ], function(
   declare,
   _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
@@ -30,12 +33,12 @@ define([
 
     postCreate: function() {
       this.inherited(arguments);
-      console.log('EventEditor::postCreate');
     },
 
     startup: function() {
       this.inherited(arguments);
       console.log('EventEditor::startup');
+      this.startDateNode.placeHolder = '1/30/2014';// new Date().toString();
     }
   });
 });

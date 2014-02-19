@@ -9,10 +9,14 @@
 
 .tripin-workflow-parent-logo h2 {
   margin: 0 !important;
-  
+
 }
 
-.tripin-event-editor {
-  /* TODO: real styles */
+/* event editor */
+.tripin-event-editor-label {
+    display: inline-block;
+    width: 40px;
 }
-
+.tripin-event-editor-row {
+    margin: 0 0 5px 0;
+}
