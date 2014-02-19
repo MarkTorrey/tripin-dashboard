@@ -1,0 +1,46 @@
+<div style="width:100%;">
+  <table class="setting-table input-table" cellspacing="0">
+    <tbody>
+      <tr>
+        <td colspan="2">${nls.showArcgisBasemaps}
+        <input style="margin-left: 10px;" data-dojo-attach-point="showArcGISBasemaps" 
+          data-dojo-type="dijit/form/CheckBox"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div data-dojo-attach-point="tableBasemaps"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><hr></td>
+      </tr>
+      <tr>
+        <td class="first">*Url</td>
+        <td class="second">
+          <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="url" 
+          placeHolder="http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+          required="true" data-dojo-props="style:{width:'100%'}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="first">*${nls.title}</td>
+        <td class="second">
+          <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="title" 
+          required="true" placeHolder="World Street Map" data-dojo-props='style:{width:"100%"}'/>
+        </td>
+      </tr>
+      <tr>
+        <td class="first">${nls.thumbnail}</td>
+        <td class="second">
+          <input type="text" data-dojo-type="dijit/form/TextBox" 
+          data-dojo-attach-point="thumbnail" placeHolder="data:image/png;base64,*** or images/street.jpg"
+          data-dojo-props='style:{width:"100%"}'/>
+          <img src="" width="100px" height="67px" data-dojo-attach-event="click:addImage" 
+          data-dojo-attach-point="showImageChooser">&nbsp;&nbsp;&nbsp;&nbsp;(${nls.thumbnailHint})
+        </td>
+      </tr>
+    </tbody>
+  </table><br>
+  <button data-dojo-type="dijit/form/Button" type="button" data-dojo-attach-event="click:add">${nls.add}</button>
+</div>

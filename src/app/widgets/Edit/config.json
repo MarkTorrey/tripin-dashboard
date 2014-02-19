@@ -1,0 +1,157 @@
+{
+  "editor": {
+    "enableUndoRedo": true,
+    "toolbarVisible": true,
+    "toolbarOptions": {
+      "mergeVisible": true,
+      "cutVisible": true,
+      "reshapeVisible": true
+    },
+    "layerInfos": [
+      {
+        "featureLayer": {
+          "url": "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0"
+        },
+        "disableGeometryUpdate": true,
+        "fieldInfos": [
+          {
+            "fieldName": "objectid",
+            "label": "OBJECTID",
+            "isEditable": false
+          },
+          {
+            "fieldName": "rotation",
+            "label": "Rotation",
+            "isEditable": false
+          },
+          {
+            "fieldName": "description",
+            "label": "Description",
+            "isEditable": true
+          },
+          {
+            "fieldName": "eventdate",
+            "label": "Date",
+            "isEditable": true
+          },
+          {
+            "fieldName": "eventtype",
+            "label": "Type",
+            "isEditable": true
+          },
+          {
+            "fieldName": "created_user",
+            "label": "created_user",
+            "isEditable": true
+          },
+          {
+            "fieldName": "created_date",
+            "label": "created_date",
+            "isEditable": true
+          },
+          {
+            "fieldName": "last_edited_user",
+            "label": "last_edited_user",
+            "isEditable": true
+          },
+          {
+            "fieldName": "last_edited_date",
+            "label": "last_edited_date",
+            "isEditable": true
+          }
+        ]
+      },
+      {
+        "featureLayer": {
+          "url": "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/1"
+        },
+        "disableGeometryUpdate": true,
+        "fieldInfos": [
+          {
+            "fieldName": "objectid",
+            "label": "OBJECTID",
+            "isEditable": true
+          },
+          {
+            "fieldName": "symbolid",
+            "label": "symbolID",
+            "isEditable": true
+          },
+          {
+            "fieldName": "timestamp",
+            "label": "TimeStamp",
+            "isEditable": true
+          },
+          {
+            "fieldName": "description",
+            "label": "Description",
+            "isEditable": true
+          },
+          {
+            "fieldName": "created_user",
+            "label": "created_user",
+            "isEditable": true
+          },
+          {
+            "fieldName": "created_date",
+            "label": "created_date",
+            "isEditable": true
+          },
+          {
+            "fieldName": "last_edited_user",
+            "label": "last_edited_user",
+            "isEditable": true
+          },
+          {
+            "fieldName": "last_edited_date",
+            "label": "last_edited_date",
+            "isEditable": true
+          }
+        ]
+      },
+      {
+        "featureLayer": {
+          "url": "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/2"
+        },
+        "disableGeometryUpdate": false,
+        "fieldInfos": [
+          {
+            "fieldName": "objectid",
+            "label": "OBJECTID",
+            "isEditable": true
+          },
+          {
+            "fieldName": "symbolid",
+            "label": "symbolID",
+            "isEditable": true
+          },
+          {
+            "fieldName": "description",
+            "label": "Description",
+            "isEditable": true
+          },
+          {
+            "fieldName": "created_user",
+            "label": "created_user",
+            "isEditable": true
+          },
+          {
+            "fieldName": "created_date",
+            "label": "created_date",
+            "isEditable": true
+          },
+          {
+            "fieldName": "last_edited_user",
+            "label": "last_edited_user",
+            "isEditable": true
+          },
+          {
+            "fieldName": "last_edited_date",
+            "label": "last_edited_date",
+            "isEditable": true
+          }
+        ]
+      }
+    ]
+  }
+}

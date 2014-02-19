@@ -1,82 +1,153 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-		<title>TripIn Dashboard</title>
-		<style type="text/css">
-			body,html {
-			  width:100%;
-			  height:100%;
-			  margin:0;
-			  padding:0;
-			  overflow:hidden;
-			  font-family: 'Open Sans', Helvetica, Arial;
-			}
-			#main-loading{
-				width: 100%;
-				height: 100%;
-				background-color: #344357;
-				text-align: center;
-				overflow: hidden;
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>ArcGIS Web Application</title>
+	<style type="text/css">
+		body, html {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			font-family: 'Open Sans', Helvetica, Arial;
+		}
 
-			}
-			#main-loading .app-name{
-				font: 36px arial;
-				font-weight: bold;
+		#main-loading {
+			position: absolute;
+			z-index: 100;
+			height: 100%;
+			width: 100%;
+			background: #1ABC9C;
+			background: -moz-radial-gradient(center, ellipse cover, #1abc9c 0%, #16a085 100%);
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1abc9c), color-stop(100%,#16a085));
+			background: -webkit-radial-gradient(center, ellipse cover, #1abc9c 0%,#16a085 100%);
+			background: -o-radial-gradient(center, ellipse cover, #1abc9c 0%,#16a085 100%);
+			background: -ms-radial-gradient(center, ellipse cover, #1abc9c 0%,#16a085 100%);
+			background: radial-gradient(ellipse at center, #1abc9c 0%,#16a085 100%);
+			/*opacity: 0.85;*/
+		}
+
+		.loading-background-image {
+			width: 102%;
+			-webkit-filter: blur(4px);
+			margin: 0 -1%;
+		}
+
+		.app-title {
+			width: 240px;
+			height: 240px;
+			background-image: linear-gradient(rgba(245, 245, 245, 0.65),rgba(255, 255, 255, 0.8));
+			border-radius: 300px;
+			position: absolute;
+			top: 50%;
+			margin-top: -120px;
+			left: 50%;
+			margin-left: -120px;
+			text-align: center;
+			line-height: 240px;
+			font-size: 150%;
+			font-weight: bold;
+			/*box-shadow: inset 0 2px 5px #0C5748;*/
+		}
+
+			.app-title .logo {
+				color: #333;
+				background: rgba(0, 0, 0, 0);
+				margin-left: 0;
 				position: absolute;
+				z-index: 101;
 				left: 50%;
 				top: 50%;
-				margin-left: -204px;
-				margin-top: -135px;
-				z-index: 2;
-			}
-			#main-loading img{
-				position: relative;
-				margin-top: 20%;
-			}
-			#main-loading .loading-info{
-				font: 14px 'arial';
-				margin-top: 50px;
-				overflow: hidden;
-			}
-			#main-loading .loading-info .loading{
-				width: 10px;
-				height: 10px;
-				border-radius: 5px;
-				display: inline-block;
-				margin-left: 20px;
+				margin-left: -56px;
+				margin-top: -56px;
 			}
 
-			#main-page{
+		.app-logo {
+			position: absolute;
+			top: -90px;
+			left: -20px;
+		}
+			.app-title h1 {
 				display: none;
-				width: 100%;
-				height: 100%;
-				position: relative;
 			}
 
-			#jimu-layout-manager{
-				width: 100%;
-				height: 100%;
-				position: absolute;
+		.loading-circle {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			-webkit-animation:loader 4s infinite linear;
+			animation: loader 4s infinite linear;
+		}
+
+		@keyframes loader {
+			0% {
+				transform: rotate(0deg);
 			}
-		</style>
-		
-	</head>
-	<body class="claro">
-		<div id="main-loading">
-			<div class="app-name"><span style="color:white">TripIn</span><span style="color:#86909c;margin-left: 10px;">Dashboard</span></div>
-			<img src="images/loading.gif">
-			<div class="loading-info"></div>
+
+			50% {
+				transform: rotate(180deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+
+		@-webkit-keyframes loader {
+			0% {
+				-webkit-transform: rotate(0deg);
+			}
+
+			50% {
+				-webkit-transform: rotate(180deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+
+
+
+
+		#main-page {
+			display: none;
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+
+		#jimu-layout-manager {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+	</style>
+
+</head>
+<body class="flat">
+	<div id="main-loading">
+		<div class="app-name" style="display:none;"><span style="color:white">ArcGIS</span><span style="color:#86909c;margin-left: 10px;">Web Application</span></div>
+		<img src="images/loading.gif" style="display:none;">
+		<div class="loading-info" style="display:none;"></div>
+		<img class="loading-background-image" src="images/Big_Bear_Lake.jpg" />
+		<div class="app-title">
+			<img src="images/loading.svg" alt="loading..." class="loading-circle" />
+			<img src="images/logo-big-bear-lake-big.png" alt="Big Bear Lake" class="logo" />
+			<img src="images/app-logo.png" alt="TripIn Dashboard"class="app-logo" />
+			<h1>TripIn Dashboard</h1>
 		</div>
-		<div id="main-page">
-			<div id="jimu-layout-manager"></div>
-		</div>		
-		<script src="env.js"></script>
-		<script src="jimu.js/simpleLoader.js"></script>
-		<script src="init.js"></script>
-	</body>
+	</div>
+	<div id="main-page" class="dojo-btn-inverse">
+		<div id="jimu-layout-manager"></div>
+	</div>
+	<script src="env.js"></script>
+	<script src="jimu.js/simpleLoader.js"></script>
+	<script src="init.js"></script>
+</body>
 
 </html>
