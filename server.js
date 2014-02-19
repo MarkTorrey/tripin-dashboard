@@ -31,6 +31,7 @@ console.log("Server listening on port " + argPort);
 var app = express();
 app.set('port', argPort || process.env.PORT || 8080);
 app.use('/proxy.js', proxy.proxyRequest());
+app.use('/', express.static(path.join(__dirname, './src/app')));
 app.use('/app', express.static(path.join(__dirname, './src/app')));
 app.use(function(err, req, res, next) {
     console.error(err.stack);
