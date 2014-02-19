@@ -10,7 +10,7 @@
   "appId": "crhIGF7lkhiqvKyT",
   "title": "ArcGIS Web Application",
   "subtitle": "with ArcGIS WebApp Builder",
-  "splashPage": "widgets/Splash/Widget",
+  //"splashPage": "widgets/Splash/Widget",
   "geometryService": {
     "url": "https://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer"
   },
