@@ -176,6 +176,13 @@
         "id": "widgets/Search/Widget_12",
         "name": "Search",
         "index": 2
+      },
+      {
+        "label": "WorkflowParent",
+        "uri": "widgets/WorkflowParent/Widget",
+        "id": "widgets/WorkflowParent/Widget_12",
+        "name": "WorkflowParent",
+        "index": 3
       }
     ]
   },
