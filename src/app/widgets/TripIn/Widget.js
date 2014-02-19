@@ -1,6 +1,7 @@
 define([
   'dojo/_base/declare',
   'dojo/_base/lang',
+  'dojo/_base/array',
   'dijit/_WidgetsInTemplateMixin',
   'jimu/BaseWidget',
   'jimu/dijit/TabContainer',
@@ -15,6 +16,7 @@ define([
   'dojo/request/xhr'
 ], function(declare,
   lang,
+  array,
   _WidgetsInTemplateMixin,
   BaseWidget,
   TabContainer,
@@ -42,25 +44,36 @@ define([
       var data = null;
       xhr(this.config.trackingTableService + this.config.trackingTableQuery, {
         sync: true,
-        handleAs: 'json',
-        load: function(d) {
-          data = d;
-        },
-        error: function(error) {
-          console.error(error);
-        }
+        handleAs: 'json'
+      }).then(function(d) {
+        //console.log("then");
+        //console.log(arguments);
+        data = d;
+      },
+      function(error) {
+        console.error(error);
       });
       console.log(data);
+      console.groupEnd('ActivityAttendeesRenderer::getSymbol');
+      var symbol = null;
       if (data !== null) {
         // TODO: create the picture marker symbol
-        return new SimpleMarkerSymbol();
+        array.forEach(data.features, function(feature) {
+          if (feature.attributes.ACTIVITY_ID === graphic.attributes.OBJECTID) {
+            var actCount = feature.attributes.ACTIVITY_COUNT;
+            console.log("count: " + actCount);
+            symbol = new PictureMarkerSymbol({
+              url:  'images/symbols/' + Math.min(actCount, 11) + '.png',
+              type: 'esriPMS'
+            });
+          }
+        });
       } else {
-        return new SimpleMarkerSymbol();
+        symbol = new SimpleMarkerSymbol();
       }
+      return symbol;
     } catch (e) {
       console.error(e);
-    } finally {
-      console.groupEnd('ActivityAttendeesRenderer::getSymbol');
     }
   }
 });
