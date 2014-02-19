@@ -106,14 +106,14 @@
       "right": 0,
       "bottom": 0
     },
-    "itemId": "5bd0a3640b23416fbedf483e7a6dabea",
+    "itemId": "509e2d6b034246d692a461724ae2d62c", //"5bd0a3640b23416fbedf483e7a6dabea",
     "id": "map",
     "mapOptions": {
       "extent": {
-        "xmin": -13026767.724599246,
-        "ymin": 4055771.66793495,
-        "xmax": -12997415.905737776,
-        "ymax": 4069109.9293706953,
+        "xmin": 	-13024570.160036052,
+        "ymin": 4056115.6345622325,
+        "xmax": -12995218.341174582,
+        "ymax": 4069071.7108565522,
         "spatialReference": {
           "wkid": 102100
         }
