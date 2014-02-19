@@ -4,16 +4,31 @@ define([
   "jimu/BaseWidget",
   "jimu/dijit/TabContainer",
   "jimu/dijit/List",
-  "jimu/utils"
-], function(declare, _WidgetsInTemplateMixin, BaseWidget, TabContainer, List, utils) {
+  "jimu/utils",
+  './EventEditor'
+], function(declare,
+  _WidgetsInTemplateMixin,
+  BaseWidget, TabContainer, List, utils,
+  EventEditor) {
   return declare([BaseWidget, _WidgetsInTemplateMixin], {
     name: "TripIn",
     baseClass: "tripin-workflow-parent",
+    postCreate: function() {
+      this.inherited(arguments);
+      this.eventEditor = new EventEditor();
+    },
+
     startup: function() {
-      alert("WorkflowParent::startup()");
+      this.inherited(arguments);
+      console.log("WorkflowParent::startup()");
+    },
+    onOpen: function() {
+      this.inherited(arguments);
+      console.log('TripIn::onOpen()');
+      this.eventEditor.placeAt(this.containerNode);
     },
     onClose: function() {
-      alert("WorkflowParent::onClose()");
+      console.log("WorkflowParent::onClose()");
     }
   });
 });
