@@ -70,7 +70,7 @@ define([
           }
         });
       }
-      
+
       if (symbol === null) {
         symbol = new SimpleMarkerSymbol();
       }
@@ -114,9 +114,13 @@ define([
 
       this.eventEditor = new EventEditor({
         title:        'Add Event',
-        featureLayer: this.eventsFeatureLayer,
+        featureLayer: this.eventsFeatureLayer
       });
-
+      this.own(this.newEventButton.on('Click', lang.hitch(this, function(/*e*/) {
+        if (!this.eventEditor.isOpen) {
+          this.eventEditor.open();
+        }
+      })));
     },
     startup: function() {
       window.MAP = this.map;
@@ -124,6 +128,7 @@ define([
       console.log('TripIn::startup()');
       this.eventList.placeAt(this.containerNode);
       this.eventEditor.placeAt(this.containerNode);
+      this.eventEditor.close();
     },
     onOpen: function() {
       this.inherited(arguments);

@@ -2,6 +2,7 @@ define([
   'dojo/_base/declare',
   'dojo/_base/lang',
   'dojo/Deferred',
+  'dojo/dom-style',
 
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
@@ -19,7 +20,7 @@ define([
   'dijit/form/Textarea',
   'dijit/form/Button'
 ], function(
-  declare, lang, Deferred,
+  declare, lang, Deferred, domStyle,
   _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
   Graphic,
   template
@@ -62,8 +63,8 @@ define([
     _initEventHandlers: function() {
       var _this = this;
       this.own(this.submitButton.on('Click', function(/*e*/) {
-        _this.addEvent().then(function(addedEvents) {
-          console.log(addedEvents);
+        _this.addEvent().then(function(/*addedEvents*/) {
+          _this.close();
         }, function(err) {
           alert(err);
         });
@@ -74,7 +75,9 @@ define([
       this.own(this.featureLayer.on('load', function(/*layer*/) {
         _this._onFeatureLayerLoad();
       }));
-      // TODO: cancel button
+      this.own(this.cancelButton.on('Click', function(/*e*/) {
+        _this.close();
+      }));
     },
 
     _onFeatureLayerLoad: function() {
@@ -136,6 +139,16 @@ define([
         END_DATE: this.endDateNode.value
       };
       return new Graphic(this.mapPoint, null, attributes, null);
+    },
+
+    open: function() {
+      domStyle.set(this.domNode, {"display": ''});
+      this.set('isOpen', true);
+    },
+
+    close: function() {
+      domStyle.set(this.domNode, {"display": 'none'});
+      this.set('isOpen', false);
     }
   });
 });
