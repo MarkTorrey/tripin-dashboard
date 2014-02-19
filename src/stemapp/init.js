@@ -15,8 +15,8 @@ loadResources([
   //{type: 'css', url: apiUrl + 'js/dojo/dojo/resources/dojo.css'},
   //{type: 'css', url: apiUrl + 'js/dojo/dijit/themes/claro/claro.css'},
   //{type: 'css', url: apiUrl + 'js/esri/css/esri.css'},
-  { type: 'css', url: 'flat/dojo/flat.css' },
-  { type: 'css', url: 'flat/esri/css/esri.css' },
+  { type: 'css', url: 'themes/TripInTheme/styles/flat/dojo/flat.css' },
+  { type: 'css', url: 'themes/TripInTheme/styles/flat/esri/css/esri.css' },
   {type: 'js', url: apiUrl},
   {type: 'css', url: path + 'jimu.js/css/jimu.css'}
 ], function(){

@@ -13,7 +13,7 @@
   },
 
   "logo":"images/app-logo.png",
-  
+
   "links":[
     {
       "label": "ArcGIS Online",
@@ -36,7 +36,7 @@
           "right": 0,
           "height": 60
         }
-      }, 
+      },
 	  {
         "position": {
           "left": 60,
@@ -56,14 +56,14 @@
         "inPanel": false,
         "position": {
           "left": 7,
-          "top": 75
+          "top": 110
         }
       }, {
         "uri": "widgets/MyLocation/Widget",
         "inPanel": false,
         "position": {
           "left": 7,
-          "top": 110
+          "top": 150
         }
       }]
   },
