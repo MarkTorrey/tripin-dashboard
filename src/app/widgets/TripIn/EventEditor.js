@@ -1,5 +1,6 @@
 define([
   'dojo/_base/declare',
+  'dojo/_base/lang',
 
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
@@ -15,7 +16,7 @@ define([
   'dijit/form/Textarea',
   'dijit/form/Button'
 ], function(
-  declare,
+  declare, lang,
   _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
   template
 ) {
@@ -33,6 +34,11 @@ define([
 
     postCreate: function() {
       this.inherited(arguments);
+      this.own(this.submitButton.on('Click', lang.hitch(this, function(e) {
+        if (this.formNode.isValid()) {
+          console.log(e);
+        }
+      })));
     },
 
     startup: function() {
