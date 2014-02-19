@@ -130,6 +130,15 @@
         "positionRelativeTo": "map",
         "label": "MyLocation",
         "name": "MyLocation"
+      },
+      {
+        "uri": "widgets/Timeslider/Widget",
+        "id": "widgets/Timeslider/Widget_13",
+        "inPanel": false,
+        "position": {
+          "left": 50,
+          "top": 25
+        }
       }
     ]
   },
