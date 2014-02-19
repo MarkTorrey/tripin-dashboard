@@ -14,6 +14,6 @@ To Run
 ------
 
     npm install
-    node server.js
+    node server.js [-port 8080]
 
-Open your browser to [http://localhost:8080/](http://localhost:8080/)
+Open your browser to [http://localhost:8080/](http://localhost:8080/) (or to the port you specified in the `node server.js` command)
