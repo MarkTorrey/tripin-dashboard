@@ -130,6 +130,7 @@ define([
       var attributes = {
         BUSINESSID_1: this.businessId,
         NAME: this.nameNode.value,
+        TEXT: this.placeNode.value,
         DESCRIPTION: this.descriptionNode.value,
         START_DATE: this.startDateNode.value,
         END_DATE: this.endDateNode.value
