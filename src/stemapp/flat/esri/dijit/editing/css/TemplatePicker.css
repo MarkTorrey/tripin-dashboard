@@ -1,0 +1,75 @@
+icon-core-style {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  text-decoration: inherit;
+  vertical-align: bottom;
+}
+.templatePicker {
+  border: 1px solid transparent;
+  padding: 4px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.templatePicker .tooltip {
+  width: 100px;
+  position: absolute;
+  border: 1px solid #7eabcd;
+  background-color: #fff;
+  padding: 5px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.templatePicker .grid .dojoxGridHeader {
+  display: none;
+}
+/* overwrite dojox datagrid styles */
+.templatePicker .dojoxGrid {
+  background: transparent;
+  font-size: 0.85em;
+}
+.templatePicker .dojoxGridScrollbox {
+  background: transparent;
+}
+.templatePicker .dojoxGridRow {
+  background: transparent;
+  border: 1px solid transparent;
+}
+/* Row */
+.templatePicker .grid .dojoxGridRow {
+  padding: 0 4px;
+}
+.templatePicker .grid .dojoxGridRowOdd {
+  background: transparent;
+}
+.templatePicker .grid .dojoxGridRowOver .dojoxGridCell {
+  background: transparent;
+}
+/* Cell */
+.templatePicker .grid .dojoxGridCell {
+  border: 1px solid transparent;
+  padding: 4px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+}
+.templatePicker .grid .dojoxGridCellOver {
+  background: #f5f5f5;
+}
+.templatePicker .grid .selectedItem {
+  background: #f5f5f5;
+  border: 2px solid #007dc6;
+  -webkit-box-shadow: 0 0px 2px rgba(0,0,0,0.2) inset, 0 1px 1px #fff;
+  -moz-box-shadow: 0 0px 2px rgba(0,0,0,0.2) inset, 0 1px 1px #fff;
+  box-shadow: 0 0px 2px rgba(0,0,0,0.2) inset, 0 1px 1px #fff;
+}
+.templatePicker .grid .groupLabel {
+  text-align: center;
+}
+.templatePicker .grid .item {
+  cursor: default;
+}
+.templatePicker .grid .dojoxGridRowTable tr {
+  vertical-align: top;
+}
