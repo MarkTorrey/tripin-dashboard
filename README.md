@@ -12,8 +12,13 @@ _The business-oriented users have a dashboard application that can be used to cr
 
 To Run
 ------
+1. Setup
 
     npm install
-    node server.js [-port 8080]
 
-Open your browser to [http://localhost:8080/](http://localhost:8080/) (or to the port you specified in the `node server.js` command)
+1. Lather
+
+    node server.js [-port 8080]
+    
+1. Rinse: Open your browser to [http://localhost:8080/](http://localhost:8080/) (or to the port you specified in the `node server.js` command)
+1. Don't repeat -- you'll get an error because the port has already been bound to
