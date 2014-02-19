@@ -70,6 +70,7 @@ define([
       }
       
       if (activityAttendeeCount > 0) {
+        graphic.attributes.ATTENDEE_COUNT = activityAttendeeCount;
         symbol = new PictureMarkerSymbol({
           url:     'images/symbols/' + activityAttendeeCount + '.png',
           type:    'esriPMS',
@@ -96,7 +97,8 @@ define([
 
       // create the feature layer for the events service
       this.eventsFeatureLayer =  new FeatureLayer(this.config.eventsFeatureService, {
-        outFields: ['*']
+        outFields: ['*'],
+        infoTemplate: new InfoTemplate("TripIn Event", "${NAME}")
       });
       this.eventsFeatureLayer.setRenderer(new SimpleRenderer(new SimpleMarkerSymbol(
         "circle",
@@ -109,7 +111,8 @@ define([
       // create the feature layer for the activities service
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
         outFields: ['*'],
-        infoTemplate: new InfoTemplate("TripIn Activity", "${NAME}")
+        mode: FeatureLayer.MODE_SNAPSHOT,
+        infoTemplate: new InfoTemplate("TripIn Activity", "${NAME} (${ATTENDEE_COUNT})<br />${DATE}<br />${DESCRIPTION}")
       });
       this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({
         config: this.config
