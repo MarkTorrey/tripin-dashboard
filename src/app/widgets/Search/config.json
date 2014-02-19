@@ -1,0 +1,52 @@
+{
+  "layers": [{
+    "name": "USA Earthquake Faults (Line)",
+    "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/USGS_Earthquake_Faults/MapServer/1",
+    "expression": "NAME like '[value]'",
+    "textsearchlabel": "Search by Name  [ Example: Diamond Springs fault ]",
+    "textsearchhint": "Name",
+    "titlefield": "Name",
+    "linkfield": "",
+    "fields": {
+      "all": false,
+      "field": [{
+        "name": "NAME",
+        "alias": "Name"
+      }, {
+        "name": "AGE",
+        "alias": "Age"
+      }]
+    }
+  }, {
+    "name": "Global Natural Hazards",
+    "url": "http://maps.ngdc.noaa.gov/arcgis/rest/services/web_mercator/hazards/MapServer/1",
+    "expression": "CAUSE like '[value]'",
+    "textsearchlabel": "Search Hazards by CAUSE... [ Example: Earthquake% ]",
+    "textsearchhint": "Natural Hazards Cause",
+    "titlefield": "CAUSE",
+    "linkfield": "",
+    "fields": {
+      "all": false,
+      "field": [{
+        "name": "CAUSE",
+        "alias":"Cause"
+      }]
+    }
+  }],
+  "zoomscale": 10000,
+  "symbols": {
+    "simplemarkersymbol": {
+      "type": "esriSMS",
+      "style": "esriSMSSquare",
+      "color": [76, 115, 0, 255],
+      "size": 8,
+      "outline": {
+        "color": [152, 230, 0, 255],
+        "width": 1
+      }
+    },
+    "picturemarkersymbol": null,
+    "simplelinesymbol": null,
+    "simplefillsymbol": null
+  }
+}

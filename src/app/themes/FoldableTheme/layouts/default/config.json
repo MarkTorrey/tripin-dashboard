@@ -1,0 +1,133 @@
+{
+  "theme": {
+    "name": "FoldableTheme"
+  },
+  "portalUrl": "http://www.arcgis.com",
+  "appId": "crhIGF7lkhiqvKyT",
+  "title": "ArcGIS Web Application",
+  "subtitle": "with ArcGIS WebApp Builder",
+  "splashPage": "widgets/Splash/Widget",
+
+  "geometryService": {
+    "url": "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
+  },
+
+  "logo":"images/app-logo.png",
+  
+  "links":[
+    {
+      "label": "ArcGIS Online",
+      "url": "//www.arcgis.com"
+    }
+  ],
+
+  "preloadWidgets": {
+    "panel": {
+      "uri": "themes/FoldableTheme/panels/TitlePanel/Panel"
+    },
+    "widgets": [{
+        "label": "HeaderController",
+        "uri": "widgets/HeaderController/Widget",
+        "positionRelativeTo": "browser",
+        "position": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "height": 40
+        }
+      },{
+        "label": "Scalebar",
+        "uri": "widgets/Scalebar/Widget",
+        "position": {
+          "left": 25,
+          "bottom": 25
+        }
+      }, {
+        "label": "Coordinate",
+        "uri": "widgets/Coordinate/Widget",
+        "inPanel": false,
+        "position": {
+          "left": 200,
+          "bottom": 10
+        }
+      },{
+        "position": {
+          "left": 55,
+          "top": 5,
+          "width": 400,
+          "height": 410
+        }
+      }, {
+        "position": {
+          "left": 105,
+          "top": 5,
+          "width": 380,
+          "height": 500
+        }
+      }, {
+        "position": {
+          "left": 155,
+          "top": 5,
+          "width": 380,
+          "height": 500
+        }
+      },{
+        "label": "OverviewMap",
+        "uri": "widgets/OverviewMap/Widget",
+        "position": {
+          "right": 0,
+          "bottom": 0
+        }
+      }, {
+        "uri": "widgets/HomeButton/Widget",
+        "inPanel": false,
+        "position": {
+          "left": 7,
+          "top": 75
+        }
+      }, {
+        "uri": "widgets/MyLocation/Widget",
+        "inPanel": false,
+        "position": {
+          "left": 7,
+          "top": 110
+        }
+      }]
+  },
+
+  "map": {
+    "3D": false,
+    "2D": true,
+
+    "position": {
+      "left": 0,
+      "top": 40,
+      "right": 0,
+      "bottom": 0
+    },
+
+    "itemId": "5bd0a3640b23416fbedf483e7a6dabea"
+  },
+  "widgetPool": {
+    "panel": {
+      "uri": "themes/FoldableTheme/panels/FoldablePanel/Panel",
+      "positionRelativeTo": "map",
+      "position": {
+        "top": 5,
+        "right": 5,
+        "bottom": 5
+      }
+    },
+
+    "widgets": [{
+      "label": "Legend",
+      "uri": "widgets/Legend/Widget"
+    }, {
+      "label": "LayerList",
+      "uri": "widgets/LayerList/Widget"
+    },{
+      "label": "Search",
+      "uri": "widgets/Search/Widget"
+    }]
+  }
+}

@@ -1,0 +1,58 @@
+.jimu-widget-search{
+  margin: -14px -14px 0 -14px;
+}
+.jimu-widget-search .dijitArrowButtonContainer{
+  width: 30px;
+}
+.jimu-widget-search .dijitSelect{
+  height: 30px;
+  width: 100%;
+}
+div[dijitpopupparent="search-select-layer1"] .dijitMenuItem{
+  height: 30px;
+}
+div[dijitpopupparent="search-select-layer2"] .dijitMenuItem{
+  height: 30px;
+}
+.jimu-widget-search .searchFeaturesIcon{
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  text-align: center;
+  float: left;
+  margin: 10px 11px 12px 11px;
+}
+.jimu-widget-search .searchFeaturesIcon:hover{
+  background-color: #C0C0C0;
+}
+
+.jimu-widget-search .searchPoint{
+  background-image: url("../images/point.png");
+}
+.jimu-widget-search .searchLine{
+  background-image: url("../images/line.png");
+}
+.jimu-widget-search .searchPolyline{
+  background-image: url("../images/polyline.png");
+}
+.jimu-widget-search .searchFreehandPolyline{
+  background-image: url("../images/freehand_polyline.png");
+}
+.jimu-widget-search .searchTriangle{
+  background-image: url("../images/triangle.png");
+}
+.jimu-widget-search .searchExtent{
+  background-image: url("../images/extent.png");
+}
+.jimu-widget-search .searchCircle{
+  background-image: url("../images/circle.png");
+}
+.jimu-widget-search .searchEllipse{
+  background-image: url("../images/ellipse.png");
+}
+.jimu-widget-search .searchPolygon{
+  background-image: url("../images/polygon.png");
+}
+.jimu-widget-search .searchFreehandPolygon{
+  background-image: url("../images/freehand_polygon.png");
+}

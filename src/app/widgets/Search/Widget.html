@@ -1,0 +1,56 @@
+<div style="height:100%;">
+    <div class="item" style="width:100%;height:100%;background-color:white;">     
+      <div class="content" style="height:100%;">
+        <div data-dojo-attach-point="tabSearch">
+          <div data-dojo-attach-point="tabNode1" style="padding: 14px;">
+            <div>
+                <label>${nls.searchLayer}</label> <br>
+                <select id="search-select-layer1" style="margin-top: 10px;" data-dojo-attach-point="selectLayer1" data-dojo-type="dijit/form/Select"></select>
+              </div>
+            <br><label>${nls.selectFeaturesBy}</label><br>
+            <div id="searchDrawInfo" data-dojo-attach-point="searchDrawInfo" style="float: left;">
+            <div id="Point" title="${nls.point}" class="searchFeaturesIcon searchPoint"></div>
+            <div id="Line" title="${nls.line}" class="searchFeaturesIcon searchLine"></div>
+            <div id="Polyline" title="${nls.polyline}" class="searchFeaturesIcon searchPolyline"></div>
+            <div id="FreehandPolyline" title="${nls.freehandPolyline}" class="searchFeaturesIcon searchFreehandPolyline"></div>
+            <div id="Triangle" title="${nls.triangle}" class="searchFeaturesIcon searchTriangle"></div>
+            <div id="Extent" title="${nls.extent}" class="searchFeaturesIcon searchExtent"></div>
+            <div id="Circle" title="${nls.circle}" class="searchFeaturesIcon searchCircle"></div>
+            <div id="Ellipse" title="${nls.ellipse}" class="searchFeaturesIcon searchEllipse"></div>
+            <div id="Polygon" title="${nls.polygon}" class="searchFeaturesIcon searchPolygon"></div>
+            <div id="FreehandPolygon" title="${nls.freehandPolygon}" class="searchFeaturesIcon searchFreehandPolygon"></div>
+            </div>
+          <div data-dojo-attach-point="tabNode2" style="padding: 14px;">
+            <div>
+                <label>${nls.searchLayer}</label> <br>
+                <select id="search-select-layer2" style="margin-top: 10px;" data-dojo-attach-point="selectLayer2" data-dojo-type="dijit/form/Select"></select>
+              </div>
+            <div style="margin: 15px 0px 50px 0px; float:left;">
+            <label for="firstname" data-dojo-attach-point="labelSearchName"></label> <br>
+            <input type="text" name="firstname" value="" style="width: 100%; margin-top:10px;"
+              data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="inputSearchName"
+                data-dojo-props="trim:true" id="firstname" placeHolder="" class="jimu-input"/>
+              </div>
+              <div class="jimu-r-row play-section">
+                <div class="col-1-2">
+                <div class="jimu-btn" data-dojo-attach-point="btnSearch" 
+                data-dojo-attach-event="onclick:onSearch">${nls.search}</div>
+              </div>
+            </div>
+          </div>
+          <div data-dojo-attach-point="tabNode3" style="padding: 14px;">
+            <div data-dojo-attach-point="progressbar"></div>
+            <div data-dojo-attach-point="divResult" style="font-size:14px;padding-left:10px;padding-bottom:5px;">
+            <label data-dojo-attach-point="divResultMessage">${nls.noResults}</label>
+            <a style="float:right; margin-right:10px" href="#" data-dojo-attach-point="btnClear">${nls.clear}</a></div>
+            <hr>
+            <div style="height:100%; width:100%;" 
+            data-dojo-attach-point="divResultList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+

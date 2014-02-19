@@ -1,0 +1,9 @@
+.jimu-widget-homebutton-setting .label{
+  font-size: 14px;
+  float:left;
+}
+.jimu-widget-homebutton-setting .extent{
+  float:right;
+  width: 400px;
+  height: 280px;
+}

@@ -1,0 +1,22 @@
+{
+  "outputunit": "dms",
+  "spatialReferences": [{
+    "wkid": 2000,
+    "label": "Anguilla_1957_British_West_Indies_Grid"
+  },{
+    "wkid": 2001,
+    "label": "Antigua_1943_British_West_Indies_Grid"
+  },{
+    "wkid": 103967,
+    "label": "NAD_1983_HARN_Adj_WI_Vilas_Feet"
+  },{
+    "wkid": 103971,
+    "label": "NAD_1983_HARN_Adj_WI_Wood_Feet"
+  },{
+    "wkid": 26953,
+    "label": "NAD_1983_StatePlane_Colorado_North_FIPS_0501"
+  },{
+    "wkid": 2274,
+    "label": "NAD_1983_StatePlane_Tennessee_FIPS_4100_Feet"
+  }]
+}

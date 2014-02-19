@@ -1,0 +1,40 @@
+.claro .dijitArrowButtonContainer{
+  width: 40px;
+}
+/* Select */
+.claro .dijitSelect{
+  background-color: #f0f0f0;
+  height: 40px;
+}
+.claro .dijitSelect .dijitArrowButton {
+  background-color: #d9dde0;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.claro .dijitSelect .dijitInputField{
+  padding: 1px 10px;
+}
+.claro .dijitSelect input{
+  float: none;
+  margin: auto;
+}
+.claro .dijitMenu .dijitMenuItemSelected td{
+  background-color: #d9dde0;
+}
+
+/* dijit/form/NumberSpinner */
+.dijitReset.dijitLeft.dijitButtonNode.dijitArrowButton.dijitDownArrowButton{
+  width:100%;
+}
+
+.dijitReset.dijitLeft.dijitButtonNode.dijitArrowButton.dijitUpArrowButton{
+  width:100%;
+}
+
+.dijitReset.dijitLeft.dijitButtonNode.dijitArrowButton.dijitDownArrowButton .dijitArrowButtonInner{
+  width:100%;
+}
+
+.dijitReset.dijitLeft.dijitButtonNode.dijitArrowButton.dijitUpArrowButton .dijitArrowButtonInner{
+  width:100%;
+}
