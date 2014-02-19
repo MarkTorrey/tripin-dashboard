@@ -22,7 +22,7 @@ loadResources([
 ], function(){
   require(['jimu'], function(jimuMain){
     
-    // TODO: inject delay
+    // delay the load so users can see our pretty pretty splash screen
     window.setTimeout(jimuMain.initApp, 1500);
   });
 }, loadingInfo);
