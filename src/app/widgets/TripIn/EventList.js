@@ -2,12 +2,13 @@ define([
   'dojo/_base/declare',
   'dojo/_base/array',
   'dojo/Deferred',
+  'dojo/string',
 
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
   'dijit/_Container'
 ], function(
-  declare, array, Deferred,
+  declare, array, Deferred, string,
   _WidgetBase, _TemplatedMixin, _Container
 ) {
 
@@ -18,9 +19,17 @@ define([
     baseClass: 'tripin-event-list-item',
 
     _setEventGraphicAttr: function(newEventGraphic) {
+      var titleTemplate = '<span class="tripin-event-name">${NAME}</span><span class="tripin-event-dates">${dateRange}</span>';
+      var attr = this.eventGraphic.attributes;
+      attr.startDate = new Date(attr.START_DATE);
+      attr.endDate = new Date(attr.END_DATE);
+      attr.dateRange = attr.startDate.toLocaleDateString();
+      if (attr.endDate.getDate() !== attr.startDate.getDate()) {
+        attr.dateRange = attr.dateRange + ' - ' + attr.endDate.toLocaleDateString();
+      }
       this.eventGraphic = newEventGraphic;
-      this.titleNode.innerHTML = this.eventGraphic.attributes.NAME;
-      // TODO: what else goes in the title
+      this.titleNode.innerHTML = string.substitute(titleTemplate, attr);
+      // TODO: details
     }
 
   });
