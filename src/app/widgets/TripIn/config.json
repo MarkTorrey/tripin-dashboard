@@ -2,6 +2,6 @@
   "eventsFeatureService":     "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/0",
   "activitiesFeatureService": "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/1",
   "businessesFeatureService": "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/2",
-  "trackingTableService":     "https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/3",
+  "trackingTableService":     "/proxy.js?https://services1.arcgis.com/wQnFk5ouCfPzTlPw/ArcGIS/rest/services/BigTripin/FeatureServer/3",
   "trackingTableQuery":       "/query?where=1%3D1&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=ACTIVITY_ID&outStatistics=[%0D%0A++{%0D%0A++++%22statisticType%22%3A+%22count%22%2C%0D%0A++++%22onStatisticField%22%3A+%22ACTIVITY_ID%22%2C+%0D%0A++++%22outStatisticFieldName%22%3A+%22ACTIVITY_COUNT%22%0D%0A++}%0D%0A]&f=pjson&token="
 }

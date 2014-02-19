@@ -1,10 +1,12 @@
 {
   "name": "tripin-dashboard",
   "version": "0.0.1",
+  "private": true,
   "description": "just like it says",
   "main": "server.js",
   "dependencies": {
-    "connect": "~2.13.0"
+    "express": "3.4.4",
+    "request": "2.33.0"
   },
   "devDependencies": {},
   "scripts": {

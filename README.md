@@ -20,5 +20,5 @@ To Run
 
     node server.js [-port 8080]
     
-1. Rinse: Open your browser to [http://localhost:8080/](http://localhost:8080/) (or to the port you specified in the `node server.js` command)
+1. Rinse: Open your browser to [http://localhost:8080/app/](http://localhost:8080/app/) (or to the port you specified in the `node server.js` command)
 1. Don't repeat -- you'll get an error because the port has already been bound to
