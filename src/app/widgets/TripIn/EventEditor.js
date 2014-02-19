@@ -7,6 +7,8 @@ define([
   'dijit/_TemplatedMixin',
   "dijit/_WidgetsInTemplateMixin",
 
+  'esri/graphic',
+
   'dojo/text!./EventEditor.html',
 
   // used in template
@@ -19,6 +21,7 @@ define([
 ], function(
   declare, lang, Deferred,
   _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
+  Graphic,
   template
 ) {
   return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -87,18 +90,14 @@ define([
     getEventFeature: function() {
       // TODO: check if form is valid
       var point = this.featureLayer.getMap().extent.getCenter();
-      var eventFeature = {
-        // TODO: get geom
-        geometry: point,
-        attributes: {
-          BUSINESSID_1: this.businessId,
-          NAME: this.nameNode.value,
-          DESCRIPTION: this.descriptionNode.value,
-          START_DATE: this.startDateNode.value,
-          END_DATE: this.endDateNode.value
-        }
+      var attributes = {
+        BUSINESSID_1: this.businessId,
+        NAME: this.nameNode.value,
+        DESCRIPTION: this.descriptionNode.value,
+        START_DATE: this.startDateNode.value,
+        END_DATE: this.endDateNode.value
       };
-      return eventFeature;
+      return new Graphic(point, null, attributes, null);
     },
 
     startup: function() {
