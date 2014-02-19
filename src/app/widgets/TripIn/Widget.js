@@ -24,11 +24,11 @@ define([
     startup: function() {
       this.inherited(arguments);
       console.log('TripIn::startup()');
+      this.eventEditor.placeAt(this.containerNode);
     },
     onOpen: function() {
       this.inherited(arguments);
       console.log('TripIn::onOpen()');
-      this.eventEditor.placeAt(this.containerNode);
     },
     onClose: function() {
       console.log('TripIn::onClose()');
