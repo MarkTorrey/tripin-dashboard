@@ -6,6 +6,11 @@
       <input type="text" data-dojo-attach-point="nameNode" data-dojo-props="required: true" data-dojo-type="dijit/form/ValidationTextBox" placeholder="Event name" />
     </div>
     <div class="${baseClass}-row">
+      <label class="${baseClass}-label">Place</label>
+      <input type="text" data-dojo-attach-point="placeNode" data-dojo-props="required: true" data-dojo-type="dijit/form/ValidationTextBox" placeholder="Place name" />
+      <button data-dojo-attach-point="mapButton" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconCut', showLabel: false" type="button">Map</button>
+    </div>
+    <div class="${baseClass}-row">
       <label class="${baseClass}-label">Start</label>
       <input type="text" data-dojo-attach-point="startDateNode" data-dojo-type='dijit/form/DateTextBox' data-dojo-props="required: true" />
     </div>

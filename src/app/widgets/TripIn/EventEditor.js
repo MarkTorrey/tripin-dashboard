@@ -36,6 +36,15 @@ define([
 
     _setTitleAttr: { node: "titleNode", type: "innerHTML" },
 
+    _setFeatureLayerAttr: function(newFeatureLayer) {
+      this.featureLayer = newFeatureLayer;
+      if (this.featureLayer.loaded) {
+        this._onFeatureLayerLoad();
+      } else {
+        this.submitButton.set('disabled', true);
+      }
+    },
+
     postCreate: function() {
       this.inherited(arguments);
       this._initForm();
@@ -47,31 +56,55 @@ define([
       this.startDateNode.set('value', now);
       // now = now.setHours(now.getHours() + 1);
       this.endDateNode.set('value', now);
+      this.submitButton.set('disabled', true);
     },
 
     _initEventHandlers: function() {
-      this.own(this.submitButton.on('Click', lang.hitch(this, function(/*e*/) {
-        this.addEvent().then(function(addedEvents) {
+      var _this = this;
+      this.own(this.submitButton.on('Click', function(/*e*/) {
+        _this.addEvent().then(function(addedEvents) {
           console.log(addedEvents);
         }, function(err) {
           alert(err);
         });
-      })));
+      }));
+      this.own(this.mapButton.on('Click', function(/*e*/) {
+        _this.getMapPoint();
+      }));
+      this.own(this.featureLayer.on('load', function(/*layer*/) {
+        _this._onFeatureLayerLoad();
+      }));
       // TODO: cancel button
+    },
+
+    _onFeatureLayerLoad: function() {
+      this.map = this.featureLayer.getMap();
+      this.submitButton.set('disabled', false);
+    },
+
+    startup: function() {
+      this.inherited(arguments);
+      console.log('EventEditor::startup');
     },
 
     // add event to feature service
     addEvent: function() {
-      var eventFeature;
-      var def = new Deferred();
-      if (this.formNode.isValid()) {
-        eventFeature = this.getEventFeature();
-        def.resolve([eventFeature]);
-        def = this.featureLayer.applyEdits([eventFeature]);
-      } else {
-        def.reject('Invalid form.');
+      var eventGaphic;
+      try {
+        eventGaphic = this.getEventGraphic();
+        return this.featureLayer.applyEdits([eventGaphic]);
+      } catch (e) {
+        return new Deferred().reject(e);
       }
-      return def;
+    },
+
+    // listen for next map click and set ref to point
+    getMapPoint: function() {
+      var _this = this;
+      var mapClickHandler = this.map.on('click', function(e) {
+        _this.mapPoint = e.mapPoint;
+        mapClickHandler.remove();
+      });
     },
 
     // parse event feature from form
@@ -87,9 +120,13 @@ define([
     // START_DATE (type: esriFieldTypeDate, alias: Start Date, SQL Type: sqlTypeOther, length: 8, nullable: true, editable: true)
     // END_DATE (type: esriFieldTypeDate, alias: End Date, SQL Type: sqlTypeOther, length: 8, nullable: true, editable: true)
     // EVENTID (ty
-    getEventFeature: function() {
-      // TODO: check if form is valid
-      var point = this.featureLayer.getMap().extent.getCenter();
+    getEventGraphic: function() {
+      if (!this.mapPoint) {
+        throw 'Please select a location';
+      }
+      if (!this.formNode.isValid()) {
+        throw 'Please fill out form';
+      }
       var attributes = {
         BUSINESSID_1: this.businessId,
         NAME: this.nameNode.value,
@@ -97,13 +134,7 @@ define([
         START_DATE: this.startDateNode.value,
         END_DATE: this.endDateNode.value
       };
-      return new Graphic(point, null, attributes, null);
-    },
-
-    startup: function() {
-      this.inherited(arguments);
-      console.log('EventEditor::startup');
-      this.startDateNode.placeHolder = '1/30/2014';// new Date().toString();
+      return new Graphic(this.mapPoint, null, attributes, null);
     }
   });
 });
