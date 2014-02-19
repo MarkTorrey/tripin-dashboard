@@ -110,6 +110,12 @@ define([
       this.activitiesFeatureLayer = new FeatureLayer(this.config.activitiesFeatureService, {
         outFields: ['*'],
         infoTemplate: new InfoTemplate("TripIn Activity", "${NAME}")
+      });
+      this.activitiesFeatureLayer.setRenderer(new ActivityAttendeesRenderer({
+        config: this.config
+      }));
+      this.map.addLayer(this.activitiesFeatureLayer);
+      
       // widgets
       this.eventList = new EventList({
         title:        'My Events',
